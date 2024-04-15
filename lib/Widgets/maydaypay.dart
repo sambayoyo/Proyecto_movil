@@ -9,8 +9,7 @@ class WalletScreen extends StatelessWidget {
           'Mayday Pay',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color.fromARGB(
-            255, 5, 23, 50), // Color azul oscuro para la AppBar
+        backgroundColor: const Color.fromARGB(255, 5, 23, 50),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -18,15 +17,9 @@ class WalletScreen extends StatelessWidget {
           // Logo de la wallet y Saldo de la cuenta
           Container(
             padding: EdgeInsets.all(20.0),
-            color: const Color.fromARGB(
-                255, 5, 26, 57), // Color azul oscuro para el Container
+            color: const Color.fromARGB(255, 5, 26, 57),
             child: Column(
               children: [
-                Text(
-                  'Mayday Pay',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 24.0, color: Colors.white),
-                ),
                 SizedBox(height: 10.0), // Espacio entre los textos
                 Text(
                   'Saldo: \$100.00',
@@ -36,27 +29,60 @@ class WalletScreen extends StatelessWidget {
               ],
             ),
           ),
-          // Iconos de historial y recarga
+          // Iconos de actualizar y recarga
           Container(
-            color: Colors.blue[900], // Color azul oscuro para el fondo del Row
+            color: Color.fromARGB(255, 14, 72, 159),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  icon: Icon(Icons.history, color: Colors.white),
-                  onPressed: () {
-                    // Implementa la acción para el historial
+                InkWell(
+                  onTap: () {
+                    // Implementa la acción para el actualizar
                   },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.history, color: Colors.white),
+                        onPressed: () {
+                          // Implementa la acción para el actualizar
+                        },
+                      ),
+                      Text(
+                        'Actualizar ',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.add, color: Colors.white),
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
                     // Redirecciona a la pantalla de recarga
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => RecargaScreen()),
                     );
                   },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.add, color: Colors.white),
+                        onPressed: () {
+                          // Redirecciona a la pantalla de recarga
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RecargaScreen()),
+                          );
+                        },
+                      ),
+                      Text(
+                        'Recargar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -64,7 +90,7 @@ class WalletScreen extends StatelessWidget {
           // Espacio para mostrar el historial de transacciones
           Expanded(
             child: Container(
-              color: Color.fromARGB(255, 28, 72, 184),
+              color: Color.fromARGB(255, 71, 163, 228),
               child: Center(
                 child: Text(
                   'Historial de transacciones',
@@ -72,22 +98,6 @@ class WalletScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Ajustes',
           ),
         ],
       ),
