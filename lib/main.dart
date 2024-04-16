@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/MyHomePage.dart';
+import 'package:flutter_application_1/Widgets/maydaypay.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(), // Aquí estableces LoginPage como la pantalla inicial
+      home:
+          WalletScreen(), // Aquí estableces LoginPage como la pantalla inicial
     );
   }
 }
