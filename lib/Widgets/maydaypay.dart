@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'RecargaScreen.dart';
 
 class WalletScreen extends StatelessWidget {
   @override
@@ -100,20 +101,6 @@ class WalletScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RecargaScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Recargar'),
-      ),
-      body: Center(
-        child: Text('Pantalla de recarga'),
       ),
     );
   }
