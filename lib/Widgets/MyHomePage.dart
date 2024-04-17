@@ -1,8 +1,10 @@
 // ignore_for_file: file_names
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter_application_1/Widgets/Login.dart';
+import 'package:flutter_application_1/Widgets/RegisterPage.dart';
 
 import 'pages/Page1.dart';
 import 'pages/Page2.dart';
@@ -16,6 +18,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool isSearching = false;
   final _controller = PageController();
+  int selectedIndex = 1;
+  final screens = [LoginPage(), RegisterPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +65,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
         ],
       ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.white,
+        color: Colors.grey.shade800,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        letIndexChange: (index) => true,
+        items: [
+          Icon(Icons.wallet, color: Colors.white),
+          Icon(Icons.add, color: Colors.white),
+          Icon(Icons.settings, color: Colors.white),
+        ],
+      ),
       body: Column(
         children: [
           Container(
@@ -99,16 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           )
-        ],
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.white,
-        color: Colors.grey.shade800,
-        onTap: (index) {},
-        items: [
-          Icon(Icons.wallet, color: Colors.white),
-          Icon(Icons.add, color: Colors.white),
-          Icon(Icons.settings, color: Colors.white),
         ],
       ),
     );
