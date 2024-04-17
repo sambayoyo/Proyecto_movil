@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'RecargaScreen.dart';
 
-class WalletScreen extends StatelessWidget {
+class MayDayPay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
