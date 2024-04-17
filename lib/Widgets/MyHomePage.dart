@@ -6,10 +6,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_application_1/Widgets/Login.dart';
 import 'package:flutter_application_1/Widgets/RegisterPage.dart';
 
-import 'pages/Page1.dart';
-import 'pages/Page2.dart';
-import 'pages/Page3.dart';
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -17,7 +13,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isSearching = false;
-  final _controller = PageController();
   int selectedIndex = 1;
   final screens = [LoginPage(), RegisterPage()];
 
@@ -80,46 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.settings, color: Colors.white),
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 280.0,
-            decoration: BoxDecoration(
-              color: Colors.red.shade400,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(250.0),
-                bottomRight: Radius.circular(250.0),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                'May Day',
-                style: GoogleFonts.oleoScript(
-                  fontSize: 48,
-                  fontWeight: FontWeight.w700,
-                  textStyle: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ),
-          Column(
-            children: [
-              SizedBox(
-                height: 400.0,
-                width: 300.0,
-                child: PageView(
-                  controller: _controller,
-                  children: const [
-                    Page1(),
-                    Page2(),
-                    Page3(),
-                  ],
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+      body: screens[selectedIndex],
     );
   }
 }
