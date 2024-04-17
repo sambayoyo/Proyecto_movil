@@ -1,9 +1,10 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/Lobby.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_application_1/Widgets/Login.dart';
+import 'package:flutter_application_1/Widgets/LoginPage.dart';
 import 'package:flutter_application_1/Widgets/RegisterPage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -13,8 +14,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isSearching = false;
-  int selectedIndex = 1;
-  final screens = [LoginPage(), RegisterPage()];
+  int selectedIndex = 0;
+  final screens = [LoginPage(), const Lobby(), RegisterPage()];
 
   @override
   Widget build(BuildContext context) {
