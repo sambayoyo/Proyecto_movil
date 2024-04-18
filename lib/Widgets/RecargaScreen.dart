@@ -6,41 +6,71 @@ class RecargaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recargar'),
+        backgroundColor: Color(0xFF101010),
+        iconTheme: IconThemeData(
+          color: const Color.fromARGB(
+              255, 255, 255, 255), // Cambia el color del icono de la flecha
+        ),
       ),
+      backgroundColor: Color(0xFF101010), // Fondo negro
       body: Container(
-        color: Color.fromARGB(255, 178, 209, 216), // Fondo azul claro
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Recargue de forma segura y sencilla  ',
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              Container(
+                // Contenedor para MaydayPay
+                alignment: Alignment
+                    .topCenter, // Alineación centrada en la parte superior
+                margin: EdgeInsets.only(top: 40.0), // Margen superior
+                child: Text(
+                  'MaydayPay', // Texto "MaydayPay"
+                  style: TextStyle(
+                    fontSize: 40.0, // Tamaño grande
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 40.0),
               Text(
-                'Seleccione el método de recarga que prefiera:',
-                style: TextStyle(fontSize: 18.0),
+                'Recargue de forma segura y sencilla',
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño reducido
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40.0),
+              Text(
+                'Seleccione el método de recarga que prefiera:',
+                style: TextStyle(fontSize: 20.0, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 60.0),
               ElevatedButton(
                 onPressed: () {
                   _mostrarDialogoRecargaTarjeta(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  backgroundColor: Color(0xFFEF315D), // Color de botón
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.credit_card, size: 40.0),
-                    SizedBox(height: 10.0),
-                    Text('Recargar con tarjeta',
-                        style: TextStyle(fontSize: 18.0)),
+                    Icon(Icons.credit_card, size: 40.0, color: Colors.white),
+                    SizedBox(width: 10.0),
+                    Text(
+                      'Recargar con tarjeta',
+                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -50,16 +80,34 @@ class RecargaScreen extends StatelessWidget {
                   _generarNumeroAleatorio(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  backgroundColor: Color(0xFFEF315D), // Color de botón
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.money, size: 40.0),
-                    SizedBox(height: 10.0),
-                    Text('Recargar en efectivo',
-                        style: TextStyle(fontSize: 18.0)),
+                    Icon(Icons.money, size: 40.0, color: Colors.white),
+                    SizedBox(width: 10.0),
+                    Text(
+                      'Recargar en efectivo',
+                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    ),
                   ],
                 ),
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                'MaydayPay', // Texto en cursiva
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),
@@ -121,7 +169,6 @@ class RecargaScreen extends StatelessWidget {
   }
 
   void _generarNumeroAleatorio(BuildContext context) {
-    // Genera un número aleatorio de 5 dígitos
     Random random = Random();
     int numeroAleatorio = random.nextInt(90000) + 10000;
 
