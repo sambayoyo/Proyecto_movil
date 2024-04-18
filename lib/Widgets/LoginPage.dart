@@ -9,9 +9,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
+      backgroundColor: Color(0xFF101010),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
