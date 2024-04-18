@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,6 +9,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool cliente = true;
+  bool escolta = false;
+  bool isvisible = true;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,6 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           children: [
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.email),
                                 labelText: 'Email',
@@ -62,6 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             SizedBox(height: 20),
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.account_circle),
                                 labelText: 'User',
@@ -75,6 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             SizedBox(height: 20),
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.lock),
                                 labelText: 'Password',
@@ -84,10 +93,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                       BorderSide(color: Color(0xFFEF315D)),
                                 ),
                               ),
+                              obscureText: true,
                             ),
                             SizedBox(height: 20),
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.verified),
                                 labelText: 'Confirm Password',
@@ -136,18 +147,56 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 30),
+                          SizedBox(height: 40),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Image.asset('assets/images/cliente.png',
-                                      width: size.width * 0.3)),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Image.asset('assets/images/escolta.png',
-                                      width: size.width * 0.3))
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Visibility(
+                                      visible: cliente ? isvisible : !isvisible,
+                                      child: Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Color(0xFFEF315D),
+                                        size: size.width * 0.08,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          cliente = true;
+                                          escolta = false;
+                                        });
+                                      },
+                                      icon: Image.asset(
+                                          'assets/images/cliente.png',
+                                          width: size.width * 0.3)),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Visibility(
+                                      visible: escolta ? isvisible : !isvisible,
+                                      child: Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Color(0xFFEF315D),
+                                        size: size.width * 0.08,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          escolta = true;
+                                          cliente = false;
+                                        });
+                                      },
+                                      icon: Image.asset(
+                                          'assets/images/escolta.png',
+                                          width: size.width * 0.3)),
+                                ],
+                              ),
                             ],
                           ),
                         ],

@@ -36,6 +36,7 @@ class LoginPage extends StatelessWidget {
                           children: [
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.account_circle),
                                 labelText: 'Email or User',
@@ -49,6 +50,7 @@ class LoginPage extends StatelessWidget {
                             SizedBox(height: 20),
                             TextField(
                               cursorColor: Color(0xFFEF315D),
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 suffixIcon: Icon(Icons.lock),
                                 labelText: 'Password',
