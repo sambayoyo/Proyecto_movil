@@ -5,7 +5,7 @@ import 'package:flutter_application_1/Widgets/Lobby.dart';
 import 'package:flutter_application_1/Widgets/LoginPage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_application_1/Widgets/RegisterPage.dart';
+import 'package:flutter_application_1/Widgets/Settings.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool isSearching = false;
   int selectedIndex = 0;
-  final screens = [LoginPage(), const Lobby(), RegisterPage()];
+  final screens = [LoginPage(), const Lobby(), Settings()];
 
   @override
   Widget build(BuildContext context) {
