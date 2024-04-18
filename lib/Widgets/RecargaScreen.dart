@@ -5,8 +5,14 @@ class RecargaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Colors.black, // Fondo negro
+      appBar: AppBar(
+        backgroundColor: Color(0xFF101010),
+        iconTheme: IconThemeData(
+          color: const Color.fromARGB(
+              255, 255, 255, 255), // Cambia el color del icono de la flecha
+        ),
+      ),
+      backgroundColor: Color(0xFF101010), // Fondo negro
       body: Container(
         child: Padding(
           padding: EdgeInsets.all(20.0),
@@ -163,7 +169,6 @@ class RecargaScreen extends StatelessWidget {
   }
 
   void _generarNumeroAleatorio(BuildContext context) {
-    // Genera un número aleatorio de 5 dígitos
     Random random = Random();
     int numeroAleatorio = random.nextInt(90000) + 10000;
 

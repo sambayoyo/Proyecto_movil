@@ -5,14 +5,6 @@ class MayDayPay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Mayday Pay',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Color(0xFF101010),
-        centerTitle: true,
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -23,9 +15,13 @@ class MayDayPay extends StatelessWidget {
               children: [
                 SizedBox(height: 10.0),
                 Text(
+                  'Mayday Pay\n',
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+                Text(
                   'Saldo: \$100.00',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 32.0, color: Colors.white),
+                  style: TextStyle(fontSize: 28.0, color: Colors.white),
                 ),
               ],
             ),
