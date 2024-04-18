@@ -4,12 +4,9 @@ import 'loginpage.dart';
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/LoginPage': (context) => LoginPage(), // Registra la ruta de LoginPage
-      },
-      home: Scaffold(
+    return SafeArea(
+      top: false,
+      child: Scaffold(
         body: Container(
           width: MediaQuery.of(context)
               .size
@@ -18,22 +15,22 @@ class Settings extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                SizedBox(height: 20),
-                // Foto de perfil
                 Material(
                   color: Color(0xFF101010),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(250),
+                    bottomRight: Radius.circular(250),
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(height: 35),
                         CircleAvatar(
                           radius: 60,
                           backgroundImage:
-                              AssetImage('assets/example_profile.jpg'),
+                              AssetImage('assets/images/cliente.png'),
                         ),
                         SizedBox(height: 20),
                         Text(
@@ -61,7 +58,7 @@ class Settings extends StatelessWidget {
                 SizedBox(height: 40),
                 // Botones
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     _buildIconButton(Icons.book, 'Manual', () {
                       Navigator.push(
@@ -75,7 +72,13 @@ class Settings extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => ConsejosSeguridadScreen()));
                     }),
-                    _buildIconButton(Icons.logout, 'Cerrar Sesión', () {
+                    _buildIconButton(Icons.contact_phone, 'Contactos', () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ContactosEScreen()));
+                    }),
+                    _buildIconButton(Icons.logout, 'Salir', () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -177,6 +180,24 @@ class ManualUsuarioScreen extends StatelessWidget {
           '- Mensaje por Email: Configura mensajes automáticos por correo electrónico.\n'
           '- GPS: Utiliza el GPS para compartir tu ubicación con amigos o familiares.\n\n'
           '¡Disfruta de todas las funcionalidades y mantente seguro en línea!',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+    );
+  }
+}
+
+class ContactosEScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contactos de emergencia'),
+      ),
+      body: Center(
+        child: Text(
+          '¡Registra, edita y elimina contactos de emergencia\n'
+          '\t\t0/5',
           style: TextStyle(fontSize: 16),
         ),
       ),

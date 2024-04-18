@@ -15,13 +15,14 @@ class _LobbyState extends State<Lobby> {
   final _controller = PageController();
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [
           Container(
-            height: 280.0,
+            height: size.height * 0.25,
             decoration: BoxDecoration(
-              color: Colors.red.shade400,
+              color: Color(0xFFEF315D),
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(250.0),
                 bottomRight: Radius.circular(250.0),
@@ -31,7 +32,7 @@ class _LobbyState extends State<Lobby> {
               child: Text(
                 'May Day',
                 style: GoogleFonts.oleoScript(
-                  fontSize: 48,
+                  fontSize: size.height * 0.05,
                   fontWeight: FontWeight.w700,
                   textStyle: TextStyle(color: Colors.white),
                 ),
@@ -41,8 +42,8 @@ class _LobbyState extends State<Lobby> {
           Column(
             children: [
               SizedBox(
-                height: 400.0,
-                width: 300.0,
+                height: size.height * 0.4,
+                width: size.width * 0.6,
                 child: PageView(
                   controller: _controller,
                   children: const [

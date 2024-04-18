@@ -20,10 +20,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.white,
       appBar: selectedIndex == 1
           ? AppBar(
-              backgroundColor: Colors.red.shade400,
+              backgroundColor: Color(0xFFEF315D),
               title: !isSearching
                   ? Text("")
                   : TextField(
@@ -65,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
           : null,
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
-        color: Colors.grey.shade800,
+        color: Color(0xFF373737),
         onTap: (index) {
           setState(() {
             selectedIndex = index;
