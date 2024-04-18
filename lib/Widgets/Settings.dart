@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'loginpage.dart'; 
+import 'loginpage.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -21,7 +21,7 @@ class Settings extends StatelessWidget {
                 SizedBox(height: 20),
                 // Foto de perfil
                 Material(
-                  color: Colors.black,
+                  color: Color(0xFF101010),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30),
@@ -41,7 +41,7 @@ class Settings extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Color(0xFFEF315D)),
                         ),
                         SizedBox(height: 10),
                         Row(
@@ -165,7 +165,20 @@ class ManualUsuarioScreen extends StatelessWidget {
         title: Text('Manual de Usuario'),
       ),
       body: Center(
-        child: Text('Aquí va el contenido del manual de usuario'),
+        child: Text(
+          '¡Bienvenido al manual de usuario de nuestra aplicación!\n\n'
+          'Esta aplicación te proporciona herramientas para mantener tu '
+          'seguridad y comunicación en línea.\n\n'
+          'Funcionalidades principales:\n\n'
+          '- Mensajes por Email: Envía mensajes a través de correo electrónico.\n'
+          '- SMS Redes Sociales: Envía mensajes a través de SMS o redes sociales.\n'
+          '- Alerta SMS: Recibe alertas importantes a través de SMS.\n'
+          '- Automática: Configura opciones de comunicación automáticas.\n'
+          '- Mensaje por Email: Configura mensajes automáticos por correo electrónico.\n'
+          '- GPS: Utiliza el GPS para compartir tu ubicación con amigos o familiares.\n\n'
+          '¡Disfruta de todas las funcionalidades y mantente seguro en línea!',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
     );
   }
