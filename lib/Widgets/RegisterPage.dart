@@ -4,9 +4,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Register'),
-      ),
+      backgroundColor: Color(0xFF101010),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
