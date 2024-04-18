@@ -5,20 +5,36 @@ class RecargaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
+      backgroundColor: Colors.black, // Fondo negro
       body: Container(
-        color: Color(0xFF101010), // Color principal
         child: Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                // Contenedor para MaydayPay
+                alignment: Alignment
+                    .topCenter, // Alineación centrada en la parte superior
+                margin: EdgeInsets.only(top: 40.0), // Margen superior
+                child: Text(
+                  'MaydayPay', // Texto "MaydayPay"
+                  style: TextStyle(
+                    fontSize: 40.0, // Tamaño grande
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(height: 40.0),
               Text(
                 'Recargue de forma segura y sencilla',
                 style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                  fontSize: 20.0, // Tamaño reducido
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40.0),
@@ -34,7 +50,8 @@ class RecargaScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0), backgroundColor: Color(0xFFEF315D), // Color de botón
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  backgroundColor: Color(0xFFEF315D), // Color de botón
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -44,8 +61,10 @@ class RecargaScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.credit_card, size: 40.0, color: Colors.white),
                     SizedBox(width: 10.0),
-                    Text('Recargar con tarjeta',
-                        style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                    Text(
+                      'Recargar con tarjeta',
+                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -56,7 +75,8 @@ class RecargaScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0), backgroundColor: const Color(0xFFEF315D), // Color de botón
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  backgroundColor: Color(0xFFEF315D), // Color de botón
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -66,10 +86,22 @@ class RecargaScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.money, size: 40.0, color: Colors.white),
                     SizedBox(width: 10.0),
-                    Text('Recargar en efectivo',
-                        style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                    Text(
+                      'Recargar en efectivo',
+                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    ),
                   ],
                 ),
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                'MaydayPay', // Texto en cursiva
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),
