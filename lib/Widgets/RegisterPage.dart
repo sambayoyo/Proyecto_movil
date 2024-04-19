@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       backgroundColor: Color(0xFF101010),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        forceMaterialTransparency: true,
         elevation: 0, // Para eliminar la sombra
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
