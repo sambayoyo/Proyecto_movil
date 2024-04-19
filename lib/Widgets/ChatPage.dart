@@ -13,36 +13,36 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final theme = Theme.of(context);
+    Theme.of(context);
 
-    return Scaffold(
-      backgroundColor: Color(0xFF101010),
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Chats',
-          style: GoogleFonts.oleoScript(
-            fontSize: size.height * 0.03,
-            fontWeight: FontWeight.w700,
-            textStyle: TextStyle(color: Colors.white),
-          ),
+    return Container(
+      width: size.width,
+      height: size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/wallpaper.jpg'),
+          fit: BoxFit.cover,
         ),
       ),
-      body: Container(
-        width: size.width,
-        height: size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/cliente.png'),
-            fit: BoxFit.cover,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          forceMaterialTransparency: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            'Chats',
+            style: GoogleFonts.oleoScript(
+              fontSize: size.height * 0.03,
+              fontWeight: FontWeight.w700,
+              textStyle: TextStyle(color: Colors.white),
+            ),
           ),
         ),
-        child: SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
@@ -51,7 +51,6 @@ class _ChatPageState extends State<ChatPage> {
                   itemCount: _messages.length,
                   itemBuilder: (context, index) {
                     final message = _messages[index];
-                    final messageStyle = theme.textTheme.bodyText1;
                     final messageBubble = Container(
                       margin: EdgeInsets.symmetric(vertical: 10),
                       child: Row(
@@ -81,7 +80,9 @@ class _ChatPageState extends State<ChatPage> {
                             ),
                             child: Text(
                               message,
-                              style: messageStyle,
+                              style: TextStyle(color: Colors.white),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
                             ),
                           ),
                         ],
@@ -98,20 +99,30 @@ class _ChatPageState extends State<ChatPage> {
                     Expanded(
                       child: TextField(
                         controller: _controller,
+                        style: TextStyle(
+                            color: Colors
+                                .black), // Establece el color del texto en negro
+                        cursorColor: Color(
+                            0xFFEF315D), // Establece el color del cursor en rojo (puedes elegir el color que desees)
                         decoration: InputDecoration(
                           hintText: 'Type a message...',
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
+                          hintStyle: TextStyle(
+                              color: Colors
+                                  .grey), // Establece el color del texto de sugerencia en gris
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(20),
                             borderSide: BorderSide.none,
                           ),
+                          filled: true,
+                          fillColor: Colors
+                              .white, // Establece el color de fondo del TextField en blanco
                         ),
                       ),
                     ),
                     IconButton(
+                      color: Color(0xFFEF315D),
                       icon: Icon(Icons.send),
                       onPressed: () {
                         final message = _controller.text;
