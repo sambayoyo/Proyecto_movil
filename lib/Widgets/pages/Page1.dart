@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/ChatPage.dart';
+import 'package:flutter_application_1/Widgets/Solicitud.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});
@@ -27,7 +27,8 @@ class Page1 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ChatPage()),
+                        MaterialPageRoute(
+                            builder: (context) => SolicitudPage()),
                       );
                     },
                   ),
