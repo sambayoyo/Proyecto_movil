@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'dart:ui';
+import 'package:flutter_application_1/Widgets/MyHomePage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'RegisterPage.dart';
@@ -88,7 +89,11 @@ class LoginPage extends StatelessWidget {
                               backgroundColor: Color(0xFFEF315D),
                             ),
                             onPressed: () {
-                              // Lógica para "SIGN IN"
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()),
+                              );
                             },
                             child: Text(
                               'SIGN IN',

@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/LoginPage.dart';
+import 'package:flutter_application_1/Widgets/MyHomePage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -25,7 +27,10 @@ class _RegisterPageState extends State<RegisterPage> {
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
-            // Lógica para regresar a la página anterior
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
           },
         ),
       ),
@@ -122,10 +127,14 @@ class _RegisterPageState extends State<RegisterPage> {
                               backgroundColor: Color(0xFFEF315D),
                             ),
                             onPressed: () {
-                              // Lógica para "SIGN IN"
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()),
+                              );
                             },
                             child: Text(
-                              'SIGN IN',
+                              'SIGN UP',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

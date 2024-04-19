@@ -14,7 +14,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isSearching = false;
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   final screens = [MayDayPay(), const Lobby(), Settings()];
 
   @override
@@ -65,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : null,
       bottomNavigationBar: CurvedNavigationBar(
+        index: selectedIndex,
         backgroundColor: Colors.white,
         color: Color(0xFF373737),
         onTap: (index) {

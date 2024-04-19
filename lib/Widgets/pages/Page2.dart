@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/ChatPage.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({super.key});
@@ -18,10 +19,18 @@ class Page2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image(image: AssetImage('assets/images/escolta.png')),
-                  Text(
-                    'Escolta1',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChatPage()),
+                      );
+                    },
+                    child: Text(
+                      'Escolta1',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
                 ],
               ),

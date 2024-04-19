@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/ChatPage.dart';
 import 'package:flutter_application_1/Widgets/LoginPage.dart';
 import 'package:flutter_application_1/Widgets/MyHomePage.dart';
 import 'package:flutter_application_1/Widgets/RegisterPage.dart';
@@ -20,7 +19,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // A widget which will be started on application startup
-        home: ChatPage(), // Aquí estableces LoginPage como la pantalla inicial
+        home:
+            MyHomePage(), // Aquí estableces LoginPage como la pantalla inicial
         routes: {
           '/home': (context) => MyHomePage(),
           '/login': (context) => LoginPage(),
