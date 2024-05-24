@@ -30,10 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  
+  shared_preferences: ^2.0.6
+  # La siguiente línea también tiene una fuente para shared_preferences
+  # Esto causa el error
+  
   cupertino_icons: ^1.0.6
   curved_navigation_bar: ^1.0.3
   google_fonts: ^6.2.1

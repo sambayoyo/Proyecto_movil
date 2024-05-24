@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'loginpage.dart';
 
 class Settings extends StatelessWidget {
@@ -8,9 +9,7 @@ class Settings extends StatelessWidget {
       top: false,
       child: Scaffold(
         body: Container(
-          width: MediaQuery.of(context)
-              .size
-              .width, // Ajustar el ancho según el tamaño de la pantalla
+          width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,20 +26,7 @@ class Settings extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: 35),
-                        CircleAvatar(
-                          radius: 60,
-                          backgroundImage:
-                              AssetImage('assets/images/cliente.png'),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Nombre de Usuario',
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFEF315D)),
-                        ),
-                        SizedBox(height: 10),
+                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -78,7 +64,10 @@ class Settings extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => ContactosEScreen()));
                     }),
-                    _buildIconButton(Icons.logout, 'Salir', () {
+                    _buildIconButton(Icons.logout, 'Salir', () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.remove('userData');
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -94,7 +83,6 @@ class Settings extends StatelessWidget {
                     OptionItem(title: 'SMS Redes Sociales'),
                     OptionItem(title: 'Alerta SMS'),
                     OptionItem(title: 'Automática'),
-                    OptionItem(title: 'SMS Email'),
                     OptionItem(title: 'GPS'),
                   ],
                 ),
@@ -133,7 +121,25 @@ class OptionItem extends StatefulWidget {
 }
 
 class _OptionItemState extends State<OptionItem> {
-  bool _isEnabled = false;
+  late bool _isEnabled;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadOptionState();
+  }
+
+  Future<void> _loadOptionState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isEnabled = prefs.getBool(widget.title) ?? false;
+    });
+  }
+
+  Future<void> _saveOptionState(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(widget.title, value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +158,7 @@ class _OptionItemState extends State<OptionItem> {
               setState(() {
                 _isEnabled = value;
               });
+              _saveOptionState(value);
             },
           ),
         ],
@@ -208,6 +215,7 @@ class ContactosEScreen extends StatelessWidget {
 class ConsejosSeguridadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var confidencial;
     return Scaffold(
       appBar: AppBar(
         title: Text('Consejos de Seguridad'),
@@ -229,26 +237,60 @@ class ConsejosSeguridadScreen extends StatelessWidget {
           _buildConsejo(
               'Sé cauteloso al compartir detalles financieros en línea.'),
           _buildConsejo(
-              'Verifica la autenticidad de las páginas web antes de ingresar información confidencial.'),
+              'Verifica la autenticidad de las páginas web antes de ingresar informaciónconfidencial.'),
           _buildConsejo(
-              'No reveles información sensible por teléfono a menos que estés seguro de quién está al otro lado.'),
-          _buildConsejo(
-              'Mantén tus dispositivos físicamente seguros y no los pierdas de vista en lugares públicos.'),
-        ],
-      ),
-    );
-  }
+'No reveles información sensible por teléfono a menos que estés seguro de quién está al otro lado.'),
+_buildConsejo(
+'Mantén tus dispositivos físicamente seguros y no los pierdas de vista en lugares públicos.'),
+],
+),
+);
+}
 
-  Widget _buildConsejo(String texto) {
-    return Card(
-      elevation: 4,
-      margin: EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        title: Text(
-          texto,
-          style: TextStyle(fontSize: 18),
-        ),
-      ),
-    );
-  }
+Widget _buildConsejo(String texto) {
+return Card(
+elevation: 4,
+margin: EdgeInsets.symmetric(vertical: 8),
+child: ListTile(
+title: Text(
+texto,
+style: TextStyle(fontSize: 18),
+),
+),
+);
+}
+}
+
+class _UserNameWidget extends StatefulWidget {
+@override
+__UserNameWidgetState createState() => __UserNameWidgetState();
+}
+
+class __UserNameWidgetState extends State<_UserNameWidget> {
+String _username = '';
+
+@override
+void initState() {
+super.initState();
+_loadUsername();
+}
+
+Future<void> _loadUsername() async {
+SharedPreferences prefs = await SharedPreferences.getInstance();
+setState(() {
+_username = prefs.getString('username') ?? 'Nombre de Usuario';
+});
+}
+
+@override
+Widget build(BuildContext context) {
+return Text(
+_username,
+style: TextStyle(
+fontSize: 24,
+fontWeight: FontWeight.bold,
+color: Color(0xFFEF315D),
+),
+);
+}
 }
