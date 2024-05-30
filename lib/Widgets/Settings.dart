@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'loginpage.dart';
+import 'setting_cont/contacts.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -26,7 +27,6 @@ class Settings extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: 35),
-                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -67,7 +67,9 @@ class Settings extends StatelessWidget {
                     _buildIconButton(Icons.logout, 'Salir', () async {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
+                      await prefs.remove('emergency_contacts');
                       await prefs.remove('userData');
+
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -194,24 +196,6 @@ class ManualUsuarioScreen extends StatelessWidget {
   }
 }
 
-class ContactosEScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contactos de emergencia'),
-      ),
-      body: Center(
-        child: Text(
-          '¡Registra, edita y elimina contactos de emergencia\n'
-          '\t\t0/5',
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-    );
-  }
-}
-
 class ConsejosSeguridadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -239,58 +223,58 @@ class ConsejosSeguridadScreen extends StatelessWidget {
           _buildConsejo(
               'Verifica la autenticidad de las páginas web antes de ingresar informaciónconfidencial.'),
           _buildConsejo(
-'No reveles información sensible por teléfono a menos que estés seguro de quién está al otro lado.'),
-_buildConsejo(
-'Mantén tus dispositivos físicamente seguros y no los pierdas de vista en lugares públicos.'),
-],
-),
-);
-}
+              'No reveles información sensible por teléfono a menos que estés seguro de quién está al otro lado.'),
+          _buildConsejo(
+              'Mantén tus dispositivos físicamente seguros y no los pierdas de vista en lugares públicos.'),
+        ],
+      ),
+    );
+  }
 
-Widget _buildConsejo(String texto) {
-return Card(
-elevation: 4,
-margin: EdgeInsets.symmetric(vertical: 8),
-child: ListTile(
-title: Text(
-texto,
-style: TextStyle(fontSize: 18),
-),
-),
-);
-}
+  Widget _buildConsejo(String texto) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.symmetric(vertical: 8),
+      child: ListTile(
+        title: Text(
+          texto,
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+    );
+  }
 }
 
 class _UserNameWidget extends StatefulWidget {
-@override
-__UserNameWidgetState createState() => __UserNameWidgetState();
+  @override
+  __UserNameWidgetState createState() => __UserNameWidgetState();
 }
 
 class __UserNameWidgetState extends State<_UserNameWidget> {
-String _username = '';
+  String _username = '';
 
-@override
-void initState() {
-super.initState();
-_loadUsername();
-}
+  @override
+  void initState() {
+    super.initState();
+    _loadUsername();
+  }
 
-Future<void> _loadUsername() async {
-SharedPreferences prefs = await SharedPreferences.getInstance();
-setState(() {
-_username = prefs.getString('username') ?? 'Nombre de Usuario';
-});
-}
+  Future<void> _loadUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _username = prefs.getString('username') ?? 'Nombre de Usuario';
+    });
+  }
 
-@override
-Widget build(BuildContext context) {
-return Text(
-_username,
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.bold,
-color: Color(0xFFEF315D),
-),
-);
-}
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _username,
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFFEF315D),
+      ),
+    );
+  }
 }
