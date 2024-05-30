@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
         ),
         // A widget which will be started on application startup
         home:
-            MyHomePage(), // Aquí estableces LoginPage como la pantalla inicial
-        routes: {
+            LoginPage(), // Aquí estableces LoginPage como la pantalla inicial
+        routes: { 
+           '/login': (context) => LoginPage(),
           '/home': (context) => MyHomePage(),
-          '/login': (context) => LoginPage(),
           '/register': (context) => RegisterPage(),
         });
   }
