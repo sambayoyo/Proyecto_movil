@@ -1,8 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/OptionsManager.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'loginpage.dart';
+import 'setting_cont/contacts.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  File? _image;
+
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,6 +51,53 @@ class Settings extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: 35),
+                        Column(
+                          children: [
+                            Stack(
+                              alignment: Alignment.bottomRight,
+                              children: [
+                                Container(
+                                  height: 100,
+                                  width: 100,
+                                  child: CircleAvatar(
+                                    radius: 40,
+                                    backgroundImage: _image != null
+                                        ? FileImage(_image!)
+                                        : AssetImage(
+                                                'assets/images/cliente.png')
+                                            as ImageProvider,
+                                    backgroundColor: Colors.grey,
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  alignment: Alignment.bottomRight,
+                                  child: CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Color(0xFFEF315D),
+                                    child: IconButton(
+                                      icon: Icon(Icons.add_a_photo,
+                                          color: Colors.white, size: 24),
+                                      onPressed: _pickImage,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Title(
+                                color: Color(0xFFEF315D),
+                                child: Text(
+                                  'User Name',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xFFEF315D),
+                                  ),
+                                ))
+                          ],
+                        ),
+                        SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -66,7 +138,9 @@ class Settings extends StatelessWidget {
                     _buildIconButton(Icons.logout, 'Salir', () async {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
+                      await prefs.remove('emergency_contacts');
                       await prefs.remove('userData');
+
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -110,60 +184,20 @@ class Settings extends StatelessWidget {
   }
 }
 
-class OptionItem extends StatefulWidget {
-  final String title;
-
-  OptionItem({required this.title});
-
-  @override
-  _OptionItemState createState() => _OptionItemState();
-}
-
-class _OptionItemState extends State<OptionItem> {
-  late bool _isEnabled;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadOptionState();
-  }
-
-  Future<void> _loadOptionState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isEnabled = prefs.getBool(widget.title) ?? false;
-    });
-  }
-
-  Future<void> _saveOptionState(bool value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(widget.title, value);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            widget.title,
-            style: TextStyle(fontSize: 20),
-          ),
-          Switch(
-            value: _isEnabled,
-            activeColor: Color(0xFFEF315D),
-            onChanged: (value) {
-              setState(() {
-                _isEnabled = value;
-              });
-              _saveOptionState(value);
-            },
-          ),
-        ],
+Widget _buildIconButton(IconData icon, String text, Function()? onPressed) {
+  return Column(
+    children: [
+      IconButton(
+        icon: Icon(icon, size: 40),
+        onPressed: onPressed,
       ),
-    );
-  }
+      SizedBox(height: 10),
+      Text(
+        text,
+        style: TextStyle(fontSize: 16),
+      ),
+    ],
+  );
 }
 
 class ManualUsuarioScreen extends StatelessWidget {
@@ -193,28 +227,9 @@ class ManualUsuarioScreen extends StatelessWidget {
   }
 }
 
-class ContactosEScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contactos de emergencia'),
-      ),
-      body: Center(
-        child: Text(
-          '¡Registra, edita y elimina contactos de emergencia\n'
-          '\t\t0/5',
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-    );
-  }
-}
-
 class ConsejosSeguridadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var confidencial;
     return Scaffold(
       appBar: AppBar(
         title: Text('Consejos de Seguridad'),
