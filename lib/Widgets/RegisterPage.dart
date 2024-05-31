@@ -44,7 +44,10 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Text(
                   'May Day',
-                  style: TextStyle(fontSize: size.height * 0.08, fontWeight: FontWeight.w700, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: size.height * 0.08,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
                 ),
                 SizedBox(height: size.height * 0.05),
                 Padding(
@@ -137,7 +140,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Text(
                           'Choose your type',
-                          style: TextStyle(fontSize: size.height * 0.02, fontWeight: FontWeight.w700, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: size.height * 0.02,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
                         ),
                       ],
                     ),
@@ -161,8 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     isClient = true;
                                   });
                                 },
-                                icon: Image.asset(
-                                    'assets/images/cliente.png',
+                                icon: Image.asset('assets/images/cliente.png',
                                     width: size.width * 0.3)),
                           ],
                         ),
@@ -182,8 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     isClient = false;
                                   });
                                 },
-                                icon: Image.asset(
-                                    'assets/images/escolta.png',
+                                icon: Image.asset('assets/images/escolta.png',
                                     width: size.width * 0.3)),
                           ],
                         ),

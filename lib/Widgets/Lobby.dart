@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'pages/Page1.dart';
 import 'pages/Page2.dart';
 import 'pages/Page3.dart';
@@ -53,6 +54,14 @@ class _LobbyState extends State<Lobby> {
                   ],
                 ),
               ),
+              SmoothPageIndicator(
+                controller: _controller,
+                count: 3,
+                effect: SwapEffect(
+                  activeDotColor: Color(0xFFEF315D),
+                  spacing: 16,
+                ),
+              )
             ],
           )
         ],
