@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/Solicitud.dart';
+import 'package:flutter_application_1/Presentation/Widgets/Solicitud.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});
@@ -21,7 +21,7 @@ class Page1 extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.add_circle_outline,
-                      color: Colors.blue,
+                      color: Color(0xFF6750a4),
                       size: 50,
                     ),
                     onPressed: () {
@@ -35,7 +35,7 @@ class Page1 extends StatelessWidget {
                   Text(
                     'Añadir\nservicio',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ],
               ),

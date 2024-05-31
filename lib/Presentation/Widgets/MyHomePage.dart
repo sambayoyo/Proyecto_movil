@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/Lobby.dart';
-import 'package:flutter_application_1/Widgets/maydaypay.dart';
+import 'package:flutter_application_1/Presentation/Widgets/Lobby.dart';
+import 'package:flutter_application_1/Presentation/Widgets/maydaypay.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_application_1/Widgets/Settings.dart';
+import 'package:flutter_application_1/Presentation/Widgets/Settings.dart';
 
 class MyHomePage extends StatefulWidget {
   @override

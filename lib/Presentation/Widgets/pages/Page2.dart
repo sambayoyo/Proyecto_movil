@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/ChatPage.dart';
+import 'package:flutter_application_1/Presentation/Widgets/ChatPage.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({super.key});
@@ -27,9 +27,9 @@ class Page2 extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Escolta1',
+                      'Escolta 1',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 24),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
                 ],

@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/RegisterPage.dart';
-import 'package:flutter_application_1/Widgets/MyHomePage.dart';
+import 'package:flutter_application_1/Presentation/Widgets/MyHomePage.dart';
+import 'package:flutter_application_1/Presentation/Widgets/RegisterPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,7 +28,11 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text(
                   'May Day',
-                  style: TextStyle(fontSize: size.height * 0.08, fontWeight: FontWeight.w700, color: Colors.white),
+                  style: GoogleFonts.oleoScript(
+                    fontSize: size.height * 0.08,
+                    fontWeight: FontWeight.w700,
+                    textStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(height: size.height * 0.05),
                 Padding(
@@ -93,7 +98,10 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     'Create an account',
-                    style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline, decorationColor: Colors.blue),
+                    style: TextStyle(
+                        color: Color(0xFF6750a4),
+                        decoration: TextDecoration.underline,
+                        decorationColor: Color(0xFF6750a4)),
                   ),
                 ),
               ],
@@ -112,7 +120,8 @@ class _LoginPageState extends State<LoginPage> {
       Map<String, dynamic> userData = jsonDecode(userDataJson);
       String email = userData['email'];
       String password = userData['password']; // Obtén la contraseña almacenada
-      if (emailController.text == email && passwordController.text == password) {
+      if (emailController.text == email &&
+          passwordController.text == password) {
         // Si la información del usuario y la contraseña coinciden, redirecciona al usuario a la página principal
         Navigator.pushReplacement(
           context,
@@ -125,7 +134,8 @@ class _LoginPageState extends State<LoginPage> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Error"),
-              content: Text("Credenciales incorrectas. Por favor, inténtalo de nuevo."),
+              content: Text(
+                  "Credenciales incorrectas. Por favor, inténtalo de nuevo."),
               actions: [
                 TextButton(
                   onPressed: () {

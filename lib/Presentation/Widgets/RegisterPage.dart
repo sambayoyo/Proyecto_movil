@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/LoginPage.dart';
-import 'package:flutter_application_1/Widgets/MyHomePage.dart';
+import 'package:flutter_application_1/Presentation/Widgets/LoginPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -44,10 +44,11 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Text(
                   'May Day',
-                  style: TextStyle(
-                      fontSize: size.height * 0.08,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
+                  style: GoogleFonts.oleoScript(
+                    fontSize: size.height * 0.08,
+                    fontWeight: FontWeight.w700,
+                    textStyle: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(height: size.height * 0.05),
                 Padding(

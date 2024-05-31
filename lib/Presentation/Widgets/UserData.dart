@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Widgets/MyHomePage.dart';
+import 'package:flutter_application_1/Presentation/Widgets/MyHomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {
@@ -9,7 +9,11 @@ class UserData {
   String password;
   bool isClient;
 
-  UserData({required this.email, required this.username, required this.password, required this.isClient});
+  UserData(
+      {required this.email,
+      required this.username,
+      required this.password,
+      required this.isClient});
 
   // Método para convertir los datos a un mapa
   Map<String, dynamic> toJson() {

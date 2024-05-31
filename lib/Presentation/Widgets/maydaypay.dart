@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'RecargaScreen.dart';
 
 class MayDayPay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -14,14 +16,26 @@ class MayDayPay extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 10.0),
-                Text(
-                  'Mayday Pay\n',
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                Container(
+                  alignment: Alignment.center,
+                  height: size.height * 0.1,
+                  child: Badge(
+                    backgroundColor: Color(0xFFEF315D),
+                    label: Text('Pay'),
+                    child: Text(
+                      'May Day',
+                      style: GoogleFonts.oleoScript(
+                        fontSize: size.height * 0.025,
+                        fontWeight: FontWeight.w700,
+                        textStyle: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
                 Text(
                   'Saldo: \$100.00',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 28.0, color: Colors.white),
+                  style: TextStyle(fontSize: 30.0, color: Colors.white),
                 ),
               ],
             ),
@@ -42,7 +56,11 @@ class MayDayPay extends StatelessWidget {
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Página actualizada'),
+                          backgroundColor: Colors.white,
+                          content: Text(
+                            'Página actualizada',
+                            style: TextStyle(color: Color(0xFF6750a4)),
+                          ),
                           duration: Duration(seconds: 1),
                         ),
                       );
@@ -78,7 +96,7 @@ class MayDayPay extends StatelessWidget {
                 children: [
                   Text(
                     'Historial de transacciones',
-                    style: TextStyle(fontSize: 24.0, color: Colors.grey),
+                    style: TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   SizedBox(height: 20),
                   Expanded(

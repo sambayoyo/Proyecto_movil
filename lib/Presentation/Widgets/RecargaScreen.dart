@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:google_fonts/google_fonts.dart';
+
 class RecargaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF101010),
@@ -25,12 +28,18 @@ class RecargaScreen extends StatelessWidget {
                 alignment: Alignment
                     .topCenter, // Alineación centrada en la parte superior
                 margin: EdgeInsets.only(top: 40.0), // Margen superior
-                child: Text(
-                  'MaydayPay', // Texto "MaydayPay"
-                  style: TextStyle(
-                    fontSize: 40.0, // Tamaño grande
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                child: Badge(
+                  backgroundColor: Color(0xFFEF315D),
+                  label: Text(' Pay ', style: TextStyle(fontSize: 20)),
+                  largeSize: 30,
+                  smallSize: 30,
+                  child: Text(
+                    'May Day',
+                    style: GoogleFonts.oleoScript(
+                      fontSize: size.height * 0.05,
+                      fontWeight: FontWeight.w700,
+                      textStyle: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
@@ -105,7 +114,7 @@ class RecargaScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   fontStyle: FontStyle.italic,
-                  color: Colors.white,
+                  color: Color(0xFF6750a4),
                 ),
                 textAlign: TextAlign.center,
               ),
