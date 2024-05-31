@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker: ^0.8.4+4
   
   shared_preferences: ^2.0.6
   # La siguiente línea también tiene una fuente para shared_preferences
