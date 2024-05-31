@@ -207,20 +207,41 @@ class ManualUsuarioScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Manual de Usuario'),
       ),
-      body: Center(
-        child: Text(
-          '¡Bienvenido al manual de usuario de nuestra aplicación!\n\n'
-          'Esta aplicación te proporciona herramientas para mantener tu '
-          'seguridad y comunicación en línea.\n\n'
-          'Funcionalidades principales:\n\n'
-          '- Mensajes por Email: Envía mensajes a través de correo electrónico.\n'
-          '- SMS Redes Sociales: Envía mensajes a través de SMS o redes sociales.\n'
-          '- Alerta SMS: Recibe alertas importantes a través de SMS.\n'
-          '- Automática: Configura opciones de comunicación automáticas.\n'
-          '- Mensaje por Email: Configura mensajes automáticos por correo electrónico.\n'
-          '- GPS: Utiliza el GPS para compartir tu ubicación con amigos o familiares.\n\n'
-          '¡Disfruta de todas las funcionalidades y mantente seguro en línea!',
-          style: TextStyle(fontSize: 16),
+      body: ListView(
+        padding: EdgeInsets.all(20),
+        children: [
+          _buildConsejo(
+              '¡Bienvenido al manual de usuario de nuestra aplicación!'),
+          _buildConsejo(
+              'Esta aplicación te proporciona herramientas para mantener tu seguridad y comunicación en línea.'),
+          _buildConsejo('Funcionalidades principales:'),
+          _buildConsejo(
+              '- Mensajes por Email: Envía mensajes a través de correo electrónico.'),
+          _buildConsejo(
+              '- SMS Redes Sociales: Envía mensajes a través de SMS o redes sociales.'),
+          _buildConsejo(
+              '- Alerta SMS: Recibe alertas importantes a través de SMS.'),
+          _buildConsejo(
+              '- Automática: Configura opciones de comunicación automáticas.'),
+          _buildConsejo(
+              '- Mensaje por Email: Configura mensajes automáticos por correo electrónico.'),
+          _buildConsejo(
+              '- GPS: Utiliza el GPS para compartir tu ubicación con amigos o familiares.'),
+          _buildConsejo(
+              '¡Disfruta de todas las funcionalidades y mantente seguro en línea!'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildConsejo(String texto) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.symmetric(vertical: 8),
+      child: ListTile(
+        title: Text(
+          texto,
+          style: TextStyle(fontSize: 18),
         ),
       ),
     );
