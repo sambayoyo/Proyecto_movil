@@ -81,12 +81,6 @@ class _ContactosEScreenState extends State<ContactosEScreen> {
           SliverAppBar(
             title: Text('Contactos de emergencia'),
             floating: true,
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => _showAddContactDialog(context),
-              ),
-            ],
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -94,10 +88,6 @@ class _ContactosEScreenState extends State<ContactosEScreen> {
                 final contact = _emergencyContacts[index];
                 return Dismissible(
                   key: Key(contact['name'] ?? ''),
-                  background: Container(color: Colors.red),
-                  onDismissed: (direction) {
-                    _deleteEmergencyContact(index);
-                  },
                   child: ListTile(
                     title: Text(contact['name'] ?? ''),
                     subtitle: Text(contact['phoneNumber'] ?? ''),
@@ -135,7 +125,7 @@ class _ContactosEScreenState extends State<ContactosEScreen> {
         onPressed: () => _showAddContactDialog(context),
         label: Text('Agregar contacto'),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFFEF315D),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
